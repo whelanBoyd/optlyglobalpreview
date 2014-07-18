@@ -1,0 +1,148 @@
+<!doctype html>
+<html>
+<head> 
+  <title>Company Name</title>
+
+  <meta charset="utf-8"/>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+  <script src="//cdn.optimizely.com/js/452950005.js"></script>
+  <style type="text/css">
+body {
+        background-color: #f0f0f2;
+        margin: 0;
+        padding: 0;
+        font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        
+      } .experimentModule {
+        position: relative;
+        width: 100%;
+        height: 500px;
+        margin-top: 20px;
+      }
+      .previewShot {
+        height: 400px;
+        width: 49%
+    
+      } 
+      .variationCarousel {
+        position: relative;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 300px
+      } 
+      
+      .variationCarousel  iframe.varSelected_1 {
+        position: relative;
+        float: left;
+        display: block;
+        
+      } 
+      
+      .variationCarousel  iframe.varSelected_2 {
+        position: relative;
+        float: right;
+        display: block;
+      }
+      
+      .variationCarousel iframe {
+        display: none;  
+      } 
+      
+      .varButton {
+      }
+     
+      
+      #container {
+        background-color: #FFFFFF;
+        padding: 10px;
+        width: 90%;
+        height: 100%;
+        margin-left: 5%
+      }
+  </style>  
+ 
+</head>
+
+<body>
+  <h1>Company Name - Project Name</h1>
+  
+	<div id="container">
+      
+  		<div class="experimentModule">
+          <div class="experimentHeader">
+            <h3>Experiment Name</h3>
+            <div class="variationTabs">
+              <button data-index="0" class="varButton">Original</button>
+              <button data-index="1" class="varButton">Variation #1 Name</button>
+              <button data-index="2" class="varButton">Variation #2 Name</button>
+              <button data-index="3" class="varButton">Variation #3 Name</button>
+            </div>
+          </div>  
+          <div class="variationPreview">
+            <div class="lastShot">
+            </div>
+            <div class="variationCarousel">
+              
+                <iframe src="//tsr-onboarding.appspot.com/?optimizely_x1459694895=0" data-index="0" class="previewShot varSelected_1"></iframe>
+              
+                <iframe src="//tsr-onboarding.appspot.com/?optimizely_x1459694895=1" data-index="1" class="previewShot varSelected_2"></iframe>
+            
+                <iframe src="//tsr-onboarding.appspot.com/?optimizely_x1459694895=2" data-index="2" class="previewShot"></iframe>
+             
+                <iframe src="//tsr-onboarding.appspot.com/?optimizely_x1459694895=3" data-index="3" class="previewShot"></iframe>
+             
+            </div>
+            <div class="nextShot">
+            </div>
+          </div>
+
+      </div>
+   <div class="experimentModule">
+          <div class="experimentHeader">
+            <h3>Experiment Name</h3>
+            <div class="variationTabs">
+              <button data-index="0" class="varButton">Original</button>
+              <button data-index="1" class="varButton">Variation #1 Name</button>
+              <button data-index="2" class="varButton">Variation #2 Name</button>
+              <button data-index="3" class="varButton">Variation #3 Name</button>
+            </div>
+          </div>  
+          <div class="variationPreview">
+            <div class="lastShot">
+            </div>
+            <div class="variationCarousel">
+              
+                <iframe src="//tsr-onboarding.appspot.com/?optimizely_x1459694895=0" data-index="0" class="previewShot varSelected_1"></iframe>
+              
+                <iframe src="//tsr-onboarding.appspot.com/?optimizely_x1459694895=1" data-index="1" class="previewShot varSelected_2"></iframe>
+            
+                <iframe src="//tsr-onboarding.appspot.com/?optimizely_x1459694895=2" data-index="2" class="previewShot"></iframe>
+             
+                <iframe src="//tsr-onboarding.appspot.com/?optimizely_x1459694895=3" data-index="3" class="previewShot"></iframe>
+             
+            </div>
+            <div class="nextShot">
+            </div>
+          </div>
+
+        </div>
+  	</div>
+
+  <script>
+    $(".varButton").on('click', function() {
+      var index = $(this).attr('data-index');
+      var parent = $(this).parents(".experimentModule");
+      window.rents = parent;
+      $(rents).find(".varSelected_1").removeClass('varSelected_1');
+      $(rents).find(".varSelected_2").addClass('varSelected_1');
+      $(rents).find(".varSelected_2").removeClass('varSelected_2');
+      $(rents).find("iframe[data-index='" + index + "']").addClass('varSelected_2');
+    });
+  </script>
+  
+</body>
+</html>

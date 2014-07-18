@@ -57,6 +57,13 @@ function templateMachine(){
 optly = new OptlyAPI(project_id, token)
 doms = new templateMachine()
 
-window.experiments = optly.getExperiments(doms.insertExpModules)
+experiments = optly.getExperiments(doms.insertExpModules)
 
-console.log("success");
+
+
+// for every experiment, create an appropriate experimentModule 
+
+
+// optly.getVariation(experiments[0]["variation_ids"][0])
+// // Get Name
+// optly.getVariations(experiments[0]["variation_ids"][0])["description"]

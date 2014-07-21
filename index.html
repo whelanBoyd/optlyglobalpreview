@@ -9,6 +9,10 @@
   <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
   <script src="//cdn.optimizely.com/js/452950005.js"></script>
+  <script src="/js/handlebars.js"></script>
+  <script src="/js/main.js"></script>
+
+
   <style type="text/css">
 body {
         background-color: #f0f0f2;
@@ -69,10 +73,43 @@ body {
 
 <body>
   <h1>Company Name - Project Name</h1>
-  
-	<div id="container">
-      
-  		<div class="experimentModule">
+
+
+{% raw %}
+
+<script id="expModuleTemplate" type="text/x-handlebars-template">
+      <div class="experimentModule" data-exp-id="{{ id }}">
+          <div class="experimentHeader">
+            <h3>{{ description }}</h3>
+            <div class="variationTabs">
+            </div>
+          </div>  
+          <div class="variationPreview">
+            <div class="lastShot">
+            </div>
+            <div class="variationCarousel">
+            </div>
+            <div class="nextShot">
+            </div>
+          </div>
+      </div>
+</script> 
+
+<script id="test" type="text/x-handlebars-template"> 
+    <div> {{ test }} </div> 
+</script>
+
+<script id="variationTabsTemplate" type="text/x-handlebars-template">
+      <button data-index="{{ id }}" class="varButton">{{ description }}</button>
+</script> 
+
+<script id="variationCarouselTemplate" type="text/x-handlebars-template">
+      <iframe src="{{ experiment.edit_url }}?optimizely_x{{ experiment.id }}={{ variation.id }}" data-index="{{ variation.id }}" class="previewShot"></iframe>
+</script>
+
+
+<script id="expModuleTemplate2" type="text/x-handlebars-template">
+      <div class="experimentModule">
           <div class="experimentHeader">
             <h3>Experiment Name</h3>
             <div class="variationTabs">
@@ -101,7 +138,16 @@ body {
           </div>
 
       </div>
-   <div class="experimentModule">
+</script> 
+
+{% endraw %}
+
+
+  
+	<div id="container">
+      
+
+<!--   		<div class="experimentModule">
           <div class="experimentHeader">
             <h3>Experiment Name</h3>
             <div class="variationTabs">
@@ -129,20 +175,41 @@ body {
             </div>
           </div>
 
-        </div>
-  	</div>
+      </div>
 
-  <script>
-    $(".varButton").on('click', function() {
-      var index = $(this).attr('data-index');
-      var parent = $(this).parents(".experimentModule");
-      window.rents = parent;
-      $(rents).find(".varSelected_1").removeClass('varSelected_1');
-      $(rents).find(".varSelected_2").addClass('varSelected_1');
-      $(rents).find(".varSelected_2").removeClass('varSelected_2');
-      $(rents).find("iframe[data-index='" + index + "']").addClass('varSelected_2');
-    });
-  </script>
+
+
+
+      <div class="experimentModule">
+        <div class="experimentHeader">
+          <h3>Experiment Name</h3>
+          <div class="variationTabs">
+            <button data-index="0" class="varButton">Original</button>
+            <button data-index="1" class="varButton">Variation #1 Name</button>
+            <button data-index="2" class="varButton">Variation #2 Name</button>
+            <button data-index="3" class="varButton">Variation #3 Name</button>
+          </div>
+        </div>  
+        <div class="variationPreview">
+          <div class="lastShot">
+          </div>
+          <div class="variationCarousel">
+            
+              <iframe src="//tsr-onboarding.appspot.com/?optimizely_x1459694895=0" data-index="0" class="previewShot varSelected_1"></iframe>
+            
+              <iframe src="//tsr-onboarding.appspot.com/?optimizely_x1459694895=1" data-index="1" class="previewShot varSelected_2"></iframe>
+          
+              <iframe src="//tsr-onboarding.appspot.com/?optimizely_x1459694895=2" data-index="2" class="previewShot"></iframe>
+           
+              <iframe src="//tsr-onboarding.appspot.com/?optimizely_x1459694895=3" data-index="3" class="previewShot"></iframe>
+           
+          </div>
+          <div class="nextShot">
+          </div>
+        </div>
+
+      </div> -->
+  	</div>
   
 </body>
 </html>
